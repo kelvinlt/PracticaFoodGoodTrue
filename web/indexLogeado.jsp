@@ -35,7 +35,12 @@
         Tipo de usuario=User
         <%}%>
         <form action="GetRestaurants">
+            <input type="hidden" id="option" name="option" value="0">
             <input type="submit" value="Nuevo Plato">
+        </form>
+        <form action="GetDish">
+            <input type="hidden" id="option" name="option" value="1">
+            <input type="submit" value="Eliminacion de un plato">
         </form>
         <form action="ListadoDishName">
             <input type="hidden" id="option" name="option" value="0">
@@ -45,6 +50,8 @@
             <input type="hidden" id="option" name="option" value="1">
             <input type="submit" value="Valoraciones de un plato">
         </form>
+
+        
 
 
 

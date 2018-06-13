@@ -75,6 +75,14 @@ public class FoodEjb {
         em.persist(r);
         em.close();
     }
+    
+    public void removeDish(String d) throws FoodGoodExceptions{
+        EntityManager em = emf.createEntityManager();
+        Dish aux = em.find(Dish.class, d);
+        em.remove(aux);
+        em.close();
+    }
+    
     public void altaDish(Dish d) throws FoodGoodExceptions{
         EntityManager em = emf.createEntityManager();
         Dish aux = em.find(Dish.class, d.getName());
