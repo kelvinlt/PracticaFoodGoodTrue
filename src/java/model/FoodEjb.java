@@ -102,7 +102,7 @@ public class FoodEjb {
         return emf.createEntityManager().createNamedQuery("Dish.findAllName").getResultList();
     }
     
-    public List<Dish> listadoValoracionPlato(){
+    public List<Rate> listadoValoracionPlato(String r){
         return emf.createEntityManager().createNamedQuery("Rate.findAllByDish").getResultList();
     }
     
@@ -123,5 +123,4 @@ public class FoodEjb {
         em.persist(r);
         em.close();
     }
-    
 }

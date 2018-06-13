@@ -18,7 +18,7 @@
         %>
         <h1>Seleciona un plato para ver todas sus valoraciones</h1>
         
-        <form method="POST" action="AltaValoracionDish">
+        <form method="POST" action="ValoracionesPlato">
             <p>Plato: <select name="dish">
                     <% for (String c : todosDishes) { %>
                     <option value="<%=c%>" name="dish"><%=c%></option>

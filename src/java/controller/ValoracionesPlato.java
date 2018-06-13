@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.FoodEjb;
 import entities.Dish;
+import entities.Rate;
+import java.util.List;
 
 /**
  *
@@ -35,9 +37,18 @@ public class ValoracionesPlato extends HttpServlet {
             throws ServletException, IOException {
         
         String dish = request.getParameter("dish");
-        //busqueda por nombre del plato
-        Dish d = miEjb.busquedaDishNombre(dish);
         
+        //busqueda por nombre del plato
+        //Dish d = miEjb.busquedaDishNombre(dish);
+        
+        try {
+        List<Rate> todosValoracionesPorDish = miEjb.listadoValoracionPlato(dish);
+        request.setAttribute("todosValoracionesPorDish", todosValoracionesPorDish);
+        request.setAttribute("status", "Recogido la lista de platos");
+        } catch (Exception e) {
+            request.setAttribute("status", "Error");
+        }
+        request.getRequestDispatcher("/valoracionesFinal.jsp").forward(request, response);
         
         //añadir la busqueda de valoracion
         
