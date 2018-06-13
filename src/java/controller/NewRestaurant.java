@@ -7,20 +7,21 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import entities.User;
-import javax.ejb.EJB;
 import model.FoodEjb;
+import entities.Restaurant;
 
 /**
  *
  * @author dawm
  */
-public class NewUser extends HttpServlet {
+public class NewRestaurant extends HttpServlet {
     @EJB FoodEjb miEjb;
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -32,33 +33,19 @@ public class NewUser extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        String city = request.getParameter("city");
+        
         String name = request.getParameter("name");
-        String surname = request.getParameter("surname");
-        int tipo = Integer.parseInt(request.getParameter("tipo"));
-
-        if (!surname.equals("")) {
-            User u = new User(username, password, city, name, surname, tipo);
-            try {
-                miEjb.altaUser(u);
-                request.setAttribute("status", "User dado de alta.");
-            } catch (Exception e) {
-                request.setAttribute("status", e.getMessage());
-            }
-        } else {
-            User u = new User(username, password, city, name, tipo);
-            try {
-                miEjb.altaUser(u);
-                request.setAttribute("status", "User dado de alta.");
-            } catch (Exception e) {
-                request.setAttribute("status", e.getMessage());
-            }   
+        String city = request.getParameter("city");
+        String speciality = request.getParameter("speciality");
+        
+        Restaurant r = new Restaurant(name, city, speciality);
+        try {
+            miEjb.altaRestaurante(r);
+            request.setAttribute("status", "Restaurante dado de alta.");
+        } catch (Exception e) {
+            request.setAttribute("status", e.getMessage());
         }
         request.getRequestDispatcher("/altaFinal.jsp").forward(request, response);
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

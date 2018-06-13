@@ -42,8 +42,9 @@ public class LoginUser extends HttpServlet {
         User aux = new User();
         try {
             aux = miEjb.loginUser(u);
-            request.setAttribute("user", aux);
+            request.getSession(true).setAttribute("user", aux);
             request.setAttribute("status", "Login Correcto de user");
+            
         } catch (Exception e) {
             request.setAttribute("status", e.getMessage());
         }

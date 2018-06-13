@@ -14,11 +14,25 @@
     </head>
     <body>
         <%String status = (String) request.getAttribute("status");
-            User u =(User) request.getAttribute("user");
+            User u =(User) session.getAttribute("user");
+            String username = u.getUsername();
+            int tipo = u.getType();
         %>
         
         <h1>Index Logeado</h1>
-        <h3>Status: <%= status %></h3>
+        <h3>Status: <%=status%></h3>
+        <h3>Username: <%=username%></h3>
+        
+        <% if(tipo==1){ %>
+        Tipo de usuario=Admin
+        <form action="altaRestaurante.html">
+            <input type="submit" value="Nuevo Restaurante">
+        </form>
+            
+        
+        <%  }else{%>
+        Tipo de usuario=User
+        <%} %>
         
         
     </body>

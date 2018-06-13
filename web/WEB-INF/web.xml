@@ -12,6 +12,10 @@
         <servlet-name>LoginUser</servlet-name>
         <servlet-class>controller.LoginUser</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>NewRestaurant</servlet-name>
+        <servlet-class>controller.NewRestaurant</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>NewUser</servlet-name>
         <url-pattern>/NewUser</url-pattern>
@@ -19,6 +23,10 @@
     <servlet-mapping>
         <servlet-name>LoginUser</servlet-name>
         <url-pattern>/LoginUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NewRestaurant</servlet-name>
+        <url-pattern>/NewRestaurant</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -6,6 +6,7 @@
 package model;
 
 import entities.Dish;
+import entities.Restaurant;
 import entities.User;
 import exceptions.FoodGoodExceptions;
 import java.util.List;
@@ -63,6 +64,16 @@ public class FoodEjb {
         return emf.createEntityManager().createNamedQuery("User.findAll").getResultList();
     }
     
+    public void altaRestaurante(Restaurant r) throws FoodGoodExceptions{
+        EntityManager em = emf.createEntityManager();
+        Restaurant aux = em.find(Restaurant.class, r.getName());
+        if(aux !=null){
+            em.close();
+            throw new FoodGoodExceptions("Ya existe un restaurante con el mismo nombre");
+        }
+        em.persist(r);
+        em.close();
+    }
     public void altaDish(Dish d) throws FoodGoodExceptions{
         EntityManager em = emf.createEntityManager();
         Dish aux = em.find(Dish.class, d.getName());
