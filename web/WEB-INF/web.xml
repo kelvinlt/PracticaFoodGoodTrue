@@ -4,9 +4,21 @@
         <servlet-name>NewUser</servlet-name>
         <servlet-class>controller.NewUser</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>NewDish</servlet-name>
+        <servlet-class>controller.NewDish</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LoginUser</servlet-name>
+        <servlet-class>controller.LoginUser</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>NewUser</servlet-name>
         <url-pattern>/NewUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginUser</servlet-name>
+        <url-pattern>/LoginUser</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

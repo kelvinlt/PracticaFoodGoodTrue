@@ -76,6 +76,11 @@ public class User implements Serializable {
         this.username = username;
     }
 
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
     public User(String username, String password, String city, String name, String surname, int type) {
         this.username = username;
         this.password = password;
@@ -174,5 +179,7 @@ public class User implements Serializable {
     public String toString() {
         return "entities.User[ username=" + username + " ]";
     }
+    
+    
     
 }

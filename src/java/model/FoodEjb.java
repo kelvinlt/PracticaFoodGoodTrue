@@ -22,6 +22,8 @@ import javax.persistence.PersistenceUnit;
 public class FoodEjb {
 
     @PersistenceUnit EntityManagerFactory emf;
+    
+    
     public void altaUser(User u) throws FoodGoodExceptions{
         EntityManager em = emf.createEntityManager();
         User aux = em.find(User.class, u.getUsername());
@@ -31,6 +33,30 @@ public class FoodEjb {
         }
         em.persist(u);
         em.close();
+    }
+    
+    public User loginUser(User u) throws FoodGoodExceptions{
+        EntityManager em = emf.createEntityManager();
+        User aux = em.find(User.class, u.getUsername());
+        if(aux !=null){
+            if(aux.getUsername().equals(u.getUsername())){
+                if(aux.getPassword().equals(u.getPassword())){
+                    System.out.println("Todo correcto");
+                    
+                }else{
+                    aux = new User();
+                    throw new FoodGoodExceptions("Los passwords no coinciden");
+                }
+            }else{
+                aux = new User();
+                throw new FoodGoodExceptions("Los username no coinciden");
+            }
+        }else{
+            aux = new User();
+            throw new FoodGoodExceptions("No existe este user");
+        }
+        em.close();
+        return aux;
     }
     
     public List<User> listadoUser(){

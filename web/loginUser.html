@@ -6,18 +6,15 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>Index</title>
+        <title>Login User</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <form action="altaUser.html">
-            <input type="submit" value="Nuevo User">
-        </form>
-        
-        <form action="loginUser.html">
-            <input type="submit" value="Login User">
-        </form>
-        
+        <form method="POST" action="LoginUser">
+            <p>Username: <input type="text" name="username" required></p>
+            <p>Password: <input type="password" name="password" required></p>
+            <p><input type="submit" value="Login"></p>
+        </form>  
     </body>
 </html>
