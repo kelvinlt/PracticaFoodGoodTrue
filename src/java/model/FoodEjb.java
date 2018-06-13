@@ -6,6 +6,7 @@
 package model;
 
 import entities.Dish;
+import entities.Rate;
 import entities.Restaurant;
 import entities.User;
 import exceptions.FoodGoodExceptions;
@@ -109,6 +110,18 @@ public class FoodEjb {
         EntityManager em = emf.createEntityManager();
         Restaurant aux = em.find(Restaurant.class, r);
         return aux;
+    }
+    
+    public Dish busquedaDishNombre(String r){
+        EntityManager em = emf.createEntityManager();
+        Dish aux = em.find(Dish.class, r);
+        return aux;
+    }
+    
+    public void altaRate(Rate r){
+        EntityManager em = emf.createEntityManager();
+        em.persist(r);
+        em.close();
     }
     
 }

@@ -1,6 +1,6 @@
 <%-- 
-    Document   : listadoPlatosValoracion
-    Created on : 13-jun-2018, 17:25:10
+    Document   : altaValoracion
+    Created on : 13-jun-2018, 18:32:07
     Author     : dawm
 --%>
 
@@ -16,7 +16,7 @@
         <%String status = (String) request.getAttribute("status");
         List<String> todosDishes = (List<String>) request.getAttribute("todosDishes");
         %>
-        <h1>Seleciona un plato para ver todas sus valoraciones</h1>
+        <h1>Selecionar un plato y dale una valoracion</h1>
         
         <form method="POST" action="AltaValoracionDish">
             <p>Plato: <select name="dish">
@@ -25,6 +25,8 @@
                     <% }%>
                 </select>
             </p>
+            <p>Puntuacion:<input type="number" name="mark" min="0" max="10" required></p></p>
+            <p>Comentario:<input type="text" name="comment" required></p></p>
             <p><input type="submit" value="Seleccionar"></p>
         </form>
         

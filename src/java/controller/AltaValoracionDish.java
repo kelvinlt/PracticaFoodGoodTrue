@@ -7,21 +7,23 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.FoodEjb;
+import java.util.Date;
+import entities.User;
+import entities.Dish;
+import entities.Rate;
 
 /**
  *
  * @author dawm
  */
-public class ListadoDishName extends HttpServlet {
+public class AltaValoracionDish extends HttpServlet {
     @EJB FoodEjb miEjb;
-    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -33,27 +35,26 @@ public class ListadoDishName extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        int mark =Integer.parseInt(request.getParameter("mark"));
+        String comment = request.getParameter("comment");
+        String dish = request.getParameter("dish");
+
+        Dish d = miEjb.busquedaDishNombre(dish); 
+        Date date = new Date();
+        User u =(User) request.getSession().getAttribute("user");
+        
+        Rate ratingNew = new Rate(date, mark, comment, u, d);
+        
+        
+        
         try {
-            String option = request.getParameter("option");
-            
-            List<String> todosDishes = miEjb.listadoPlatosName();
-            request.setAttribute("todosDishes", todosDishes);
-            request.setAttribute("status", "Recogido la lista de platos");
-            
-            if(option.equalsIgnoreCase("0")){
-                request.getRequestDispatcher("/altaValoracion.jsp").forward(request, response);
-            }else{
-                request.getRequestDispatcher("/listadoPlatosValoracion.jsp").forward(request, response);   
-            }
-            
-            
+            miEjb.altaRate(ratingNew);
+            request.setAttribute("status", "Se ha dado de alta la valoracion del plato");
         } catch (Exception e) {
-            request.setAttribute("status", e.getMessage());
+            request.setAttribute("status", "Error");
         }
-        
-        
-        //listadoPlatosName
-        
+        request.getRequestDispatcher("/indexLogeado.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

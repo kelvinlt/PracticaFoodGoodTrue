@@ -28,6 +28,10 @@
         <servlet-name>ListadoDishName</servlet-name>
         <servlet-class>controller.ListadoDishName</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AltaValoracionDish</servlet-name>
+        <servlet-class>controller.AltaValoracionDish</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>NewUser</servlet-name>
         <url-pattern>/NewUser</url-pattern>
@@ -55,6 +59,10 @@
     <servlet-mapping>
         <servlet-name>ListadoDishName</servlet-name>
         <url-pattern>/ListadoDishName</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AltaValoracionDish</servlet-name>
+        <url-pattern>/AltaValoracionDish</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

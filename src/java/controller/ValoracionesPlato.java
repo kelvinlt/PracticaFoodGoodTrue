@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.FoodEjb;
+import entities.Dish;
 
 /**
  *
@@ -33,7 +34,12 @@ public class ValoracionesPlato extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        //miEjb.listadoValoracionPlato()
+        String dish = request.getParameter("dish");
+        //busqueda por nombre del plato
+        Dish d = miEjb.busquedaDishNombre(dish);
+        
+        
+        //añadir la busqueda de valoracion
         
         
         
