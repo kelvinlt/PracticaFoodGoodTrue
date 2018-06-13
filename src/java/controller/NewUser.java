@@ -11,13 +11,16 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import entities.User;
+import javax.ejb.EJB;
+import model.FoodEjb;
 
 /**
  *
  * @author dawm
  */
 public class NewUser extends HttpServlet {
-
+    @EJB FoodEjb miEjb;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -29,7 +32,33 @@ public class NewUser extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        String city = request.getParameter("city");
+        String name = request.getParameter("name");
+        String surname = request.getParameter("surname");
+        int tipo = Integer.parseInt(request.getParameter("tipo"));
+
+        if (!surname.equals("")) {
+            User u = new User(username, password, city, name, surname, tipo);
+            try {
+                miEjb.altaUser(u);
+                request.setAttribute("status", "User dado de alta.");
+            } catch (Exception e) {
+                request.setAttribute("status", e.getMessage());
+            }
+        } else {
+            User u = new User(username, password, city, name, tipo);
+            try {
+                miEjb.altaUser(u);
+                request.setAttribute("status", "User dado de alta.");
+            } catch (Exception e) {
+                request.setAttribute("status", e.getMessage());
+            }   
+        }
+        request.getRequestDispatcher("/jsp/altaUserFinal.jsp").forward(request, response);
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
