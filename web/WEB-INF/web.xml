@@ -5,16 +5,28 @@
         <servlet-class>controller.NewUser</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>NewDish</servlet-name>
-        <servlet-class>controller.NewDish</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>LoginUser</servlet-name>
         <servlet-class>controller.LoginUser</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>NewRestaurant</servlet-name>
         <servlet-class>controller.NewRestaurant</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GetRestaurants</servlet-name>
+        <servlet-class>controller.GetRestaurants</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>NewDish</servlet-name>
+        <servlet-class>controller.NewDish</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ValoracionesPlato</servlet-name>
+        <servlet-class>controller.ValoracionesPlato</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListadoDishName</servlet-name>
+        <servlet-class>controller.ListadoDishName</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>NewUser</servlet-name>
@@ -27,6 +39,22 @@
     <servlet-mapping>
         <servlet-name>NewRestaurant</servlet-name>
         <url-pattern>/NewRestaurant</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetRestaurants</servlet-name>
+        <url-pattern>/GetRestaurants</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NewDish</servlet-name>
+        <url-pattern>/NewDish</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ValoracionesPlato</servlet-name>
+        <url-pattern>/ValoracionesPlato</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListadoDishName</servlet-name>
+        <url-pattern>/ListadoDishName</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

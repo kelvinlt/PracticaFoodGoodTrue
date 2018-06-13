@@ -35,7 +35,9 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Dish.findAll", query = "SELECT d FROM Dish d"),
     @NamedQuery(name = "Dish.findByName", query = "SELECT d FROM Dish d WHERE d.name = :name"),
     @NamedQuery(name = "Dish.findByType", query = "SELECT d FROM Dish d WHERE d.type = :type"),
-    @NamedQuery(name = "Dish.findByPrice", query = "SELECT d FROM Dish d WHERE d.price = :price")})
+    @NamedQuery(name = "Dish.findByPrice", query = "SELECT d FROM Dish d WHERE d.price = :price"),
+    @NamedQuery(name = "Dish.findAllName", query = "SELECT d.name FROM Dish d")
+})
 public class Dish implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

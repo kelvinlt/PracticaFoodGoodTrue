@@ -88,4 +88,27 @@ public class FoodEjb {
     public List<Dish> listadoDish(){
         return emf.createEntityManager().createNamedQuery("Dish.findAll").getResultList();
     }
+    
+    public List<Restaurant> listadoRestaurants(){
+        return emf.createEntityManager().createNamedQuery("Restaurant.findAll").getResultList();
+    }
+    
+    public List<String> listadoRestaurantsName(){
+        return emf.createEntityManager().createNamedQuery("Restaurant.findAllName").getResultList();
+    }  
+    
+    public List<String> listadoPlatosName(){
+        return emf.createEntityManager().createNamedQuery("Dish.findAllName").getResultList();
+    }
+    
+    public List<Dish> listadoValoracionPlato(){
+        return emf.createEntityManager().createNamedQuery("Rate.findAllByDish").getResultList();
+    }
+    
+    public Restaurant busquedaRestauranteNombre(String r){
+        EntityManager em = emf.createEntityManager();
+        Restaurant aux = em.find(Restaurant.class, r);
+        return aux;
+    }
+    
 }

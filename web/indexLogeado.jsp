@@ -23,6 +23,7 @@
         <h3>Status: <%=status%></h3>
         <h3>Username: <%=username%></h3>
         
+
         <% if(tipo==1){ %>
         Tipo de usuario=Admin
         <form action="altaRestaurante.html">
@@ -33,6 +34,12 @@
         <%  }else{%>
         Tipo de usuario=User
         <%} %>
+        <form action="GetRestaurants">
+            <input type="submit" value="Nuevo Plato">
+        </form>
+        <form action="ListadoDishName">
+            <input type="submit" value="Valoraciones de un plato">
+        </form>
         
         
     </body>

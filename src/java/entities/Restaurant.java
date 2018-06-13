@@ -32,7 +32,10 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Restaurant.findAll", query = "SELECT r FROM Restaurant r"),
     @NamedQuery(name = "Restaurant.findByName", query = "SELECT r FROM Restaurant r WHERE r.name = :name"),
     @NamedQuery(name = "Restaurant.findByCity", query = "SELECT r FROM Restaurant r WHERE r.city = :city"),
-    @NamedQuery(name = "Restaurant.findBySpecialty", query = "SELECT r FROM Restaurant r WHERE r.specialty = :specialty")})
+    @NamedQuery(name = "Restaurant.findBySpecialty", query = "SELECT r FROM Restaurant r WHERE r.specialty = :specialty"),
+    @NamedQuery(name = "Restaurant.findAllName", query = "Select r.name FROM Restaurant r"),
+    @NamedQuery(name = "Restaurant.findRestaurantByName", query = "SELECT r FROM Restaurant r WHERE r.name = :name")
+})
 public class Restaurant implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
