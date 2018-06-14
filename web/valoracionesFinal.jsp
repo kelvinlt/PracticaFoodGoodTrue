@@ -19,18 +19,21 @@
         <%String status = (String) request.getAttribute("status");
             List<Rate> todosValoracionesPorDish = (List<Rate>) request.getAttribute("todosValoracionesPorDish");
         %>
-
         <h1>Valoraciones de plato</h1>
+        <table>
         <%
-            for (Iterator i = todosValoracionesPorDish.iterator(); i.hasNext();) {
-                if (i.hasNext()) {
+            for (Rate rate : todosValoracionesPorDish) {      
         %>
-        User:<%= i%>
-        
-        <%                  
-                }
+        <tr>
+        <td>User:<%=rate.getUser().getUsername()%>|</td>
+        <td>Dish:<%=rate.getDish().getName()%>|</td>
+        <td>Date:<%=rate.getDate()%>|</td>
+        <td>Mark:<%=rate.getMark()%>|</td>
+        <td>Comment:<%=rate.getComment()%></td>
+        </tr>
+        <%                   
             }
         %>
-
+        </table>
     </body>
 </html>

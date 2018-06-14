@@ -10,6 +10,7 @@ import entities.Rate;
 import entities.Restaurant;
 import entities.User;
 import exceptions.FoodGoodExceptions;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -113,8 +114,10 @@ public class FoodEjb {
         EntityManager em = emf.createEntityManager();
         Query q = em.createNamedQuery("Rate.findAllByDish");
         q.setParameter("dish", dish);
+        List<Rate> listadoValoraciones = new ArrayList<>();
+        listadoValoraciones = q.getResultList();
         em.close();
-        return q.getResultList();
+        return listadoValoraciones;
     }
     
     public Restaurant busquedaRestauranteNombre(String r){

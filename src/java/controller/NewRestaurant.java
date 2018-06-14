@@ -45,7 +45,7 @@ public class NewRestaurant extends HttpServlet {
         } catch (Exception e) {
             request.setAttribute("status", e.getMessage());
         }
-        request.getRequestDispatcher("/altaFinal.jsp").forward(request, response);
+        request.getRequestDispatcher("/indexLogeado.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

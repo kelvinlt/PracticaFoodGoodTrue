@@ -85,8 +85,6 @@ public class Rate implements Serializable {
         this.user = user;
         this.dish = dish;
     }
-    
-    
 
     public Integer getIdrate() {
         return idrate;

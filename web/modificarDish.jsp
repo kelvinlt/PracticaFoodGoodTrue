@@ -25,7 +25,7 @@
                 </select>
             </p>
             <p>Precio: <input type="number" name="price" min="0" max="99" required></p>
-            <p><input type="submit" value="Eliminar"></p>
+            <p><input type="submit" value="Modificar"></p>
         </form>
     </body>
 </html>
