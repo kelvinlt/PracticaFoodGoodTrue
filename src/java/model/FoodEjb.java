@@ -23,9 +23,7 @@ import javax.persistence.Query;
  */
 @Stateless
 public class FoodEjb {
-
-    @PersistenceUnit EntityManagerFactory emf;
-    
+    @PersistenceUnit EntityManagerFactory emf;    
     
     public void altaUser(User u) throws FoodGoodExceptions{
         EntityManager em = emf.createEntityManager();
@@ -115,6 +113,7 @@ public class FoodEjb {
         EntityManager em = emf.createEntityManager();
         Query q = em.createNamedQuery("Rate.findAllByDish");
         q.setParameter("dish", dish);
+        em.close();
         return q.getResultList();
     }
     

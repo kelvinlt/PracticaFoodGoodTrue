@@ -46,7 +46,6 @@
             <input type="hidden" id="option" name="option" value="1">
             <input type="submit" value="Eliminacion de un plato">
         </form>
-        
         <form action="ListadoDishName">
             <input type="hidden" id="option" name="option" value="0">
             <input type="submit" value="Valorar un plato">
@@ -55,10 +54,5 @@
             <input type="hidden" id="option" name="option" value="1">
             <input type="submit" value="Valoraciones de un plato">
         </form>
-
-        
-
-
-
     </body>
 </html>
