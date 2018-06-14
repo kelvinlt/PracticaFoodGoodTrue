@@ -26,7 +26,7 @@
                     <% }%>
                 </select>
             </p>
-            <p>Precio: <input type="number" name="price" min="0" required></p>
+            <p>Precio: <input type="number" name="price" min="0" max="99" required></p>
             <p><input type="submit" value="Alta"></p>
         </form>
     </body>

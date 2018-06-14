@@ -4,6 +4,7 @@
     Author     : dawm
 --%>
 
+<%@page import="entities.Rate"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.util.List"%>
@@ -16,7 +17,7 @@
     </head>
     <body>
         <%String status = (String) request.getAttribute("status");
-            List<Date> todosValoracionesPorDish = (List<Date>) request.getAttribute("todosValoracionesPorDish");
+            List<Rate> todosValoracionesPorDish = (List<Rate>) request.getAttribute("todosValoracionesPorDish");
         %>
 
         <h1>Valoraciones de plato</h1>
@@ -24,7 +25,7 @@
             for (Iterator i = todosValoracionesPorDish.iterator(); i.hasNext();) {
                 if (i.hasNext()) {
         %>
-        
+        User:<%= i%>
         
         <%                  
                 }

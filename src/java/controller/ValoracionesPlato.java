@@ -42,7 +42,8 @@ public class ValoracionesPlato extends HttpServlet {
         //Dish d = miEjb.busquedaDishNombre(dish);
         
         try {
-        List<Rate> todosValoracionesPorDish = miEjb.listadoValoracionPlato(dish);
+        Dish d = miEjb.busquedaDishNombre(dish);
+        List<Rate> todosValoracionesPorDish = miEjb.listadoValoracionPlato(d);
         request.setAttribute("todosValoracionesPorDish", todosValoracionesPorDish);
         request.setAttribute("status", "Recogido la lista de platos");
         } catch (Exception e) {

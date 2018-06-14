@@ -40,6 +40,10 @@
         <servlet-name>GetDish</servlet-name>
         <servlet-class>controller.GetDish</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ModifyDish</servlet-name>
+        <servlet-class>controller.ModifyDish</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>NewUser</servlet-name>
         <url-pattern>/NewUser</url-pattern>
@@ -79,6 +83,10 @@
     <servlet-mapping>
         <servlet-name>GetDish</servlet-name>
         <url-pattern>/GetDish</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModifyDish</servlet-name>
+        <url-pattern>/ModifyDish</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

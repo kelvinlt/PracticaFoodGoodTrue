@@ -15,6 +15,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
+import javax.persistence.Query;
 
 /**
  *
@@ -110,19 +111,24 @@ public class FoodEjb {
         return emf.createEntityManager().createNamedQuery("Dish.findAllName").getResultList();
     }
     
-    public List<Rate> listadoValoracionPlato(String r){
-        return emf.createEntityManager().createNamedQuery("Rate.findAllByDish").getResultList();
+    public List<Rate> listadoValoracionPlato(Dish dish){
+        EntityManager em = emf.createEntityManager();
+        Query q = em.createNamedQuery("Rate.findAllByDish");
+        q.setParameter("dish", dish);
+        return q.getResultList();
     }
     
     public Restaurant busquedaRestauranteNombre(String r){
         EntityManager em = emf.createEntityManager();
         Restaurant aux = em.find(Restaurant.class, r);
+        em.close();
         return aux;
     }
     
     public Dish busquedaDishNombre(String r){
         EntityManager em = emf.createEntityManager();
         Dish aux = em.find(Dish.class, r);
+        em.close();
         return aux;
     }
     
@@ -130,5 +136,14 @@ public class FoodEjb {
         EntityManager em = emf.createEntityManager();
         em.persist(r);
         em.close();
+    }
+    
+    public void modifyDish(Dish d){
+        EntityManager em = emf.createEntityManager();
+        Dish aux = em.find(Dish.class, d.getName());
+        aux.setPrice(d.getPrice());
+        em.persist(aux);
+        em.close();
+        
     }
 }

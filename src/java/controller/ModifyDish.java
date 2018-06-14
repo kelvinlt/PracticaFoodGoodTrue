@@ -5,9 +5,11 @@
  */
 package controller;
 
+import entities.Dish;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
+import java.math.BigDecimal;
+import java.math.MathContext;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -19,10 +21,11 @@ import model.FoodEjb;
  *
  * @author dawm
  */
-public class GetDish extends HttpServlet {
-    
+public class ModifyDish extends HttpServlet {
+
     @EJB
     FoodEjb miEjb;
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -34,23 +37,20 @@ public class GetDish extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        String option = request.getParameter("option");
-        
+
+        Double price = Double.parseDouble(request.getParameter("price"));
+        BigDecimal priceB = new BigDecimal(price, MathContext.DECIMAL64);
+
+        String dish = request.getParameter("dish");
         try {
-            List<String> todosDishes = miEjb.listadoPlatosName();
-            request.setAttribute("todosDishes", todosDishes);
-            request.setAttribute("status", "Recogido la lista de platos");
+            Dish d = miEjb.busquedaDishNombre(dish);
+            d.setPrice(priceB);
+            miEjb.modifyDish(d);
+            request.setAttribute("status", "Se ha modificado el precio del plato");
         } catch (Exception e) {
             request.setAttribute("status", e.getMessage());
         }
-        if(option.equals("0")){
-            request.getRequestDispatcher("/modificarDish.jsp").forward(request, response);
-        }else{
-           request.getRequestDispatcher("/removeDish.jsp").forward(request, response); 
-        }
-        
-        
+        request.getRequestDispatcher("/indexLogeado.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
